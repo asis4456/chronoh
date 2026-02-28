@@ -32,8 +32,6 @@ config = "0.14"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
-pi-rs = { path = "../rust-pi/pi-rs" }
-
 [dev-dependencies]
 tokio-test = "0.4"
 tempfile = "3.8"
