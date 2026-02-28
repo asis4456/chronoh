@@ -1,0 +1,40 @@
+[package]
+name = "chrono-h"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Time-aware harness for long-running AI agents"
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1.35", features = ["full", "rt-multi-thread"] }
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+chrono = { version = "0.4", features = ["serde"] }
+
+sled = "0.34"
+
+git2 = "0.18"
+
+clap = { version = "4.4", features = ["derive"] }
+
+async-trait = "0.1"
+
+anyhow = "1.0"
+thiserror = "1.0"
+
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+config = "0.14"
+
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+pi-rs = { path = "../rust-pi/pi-rs" }
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = "3.8"
+mockall = "0.12"
