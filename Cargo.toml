@@ -32,6 +32,14 @@ config = "0.14"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = "z" # Optimize for size
+lto = true
+codegen-units = 1
+
 [dev-dependencies]
 tokio-test = "0.4"
 tempfile = "3.8"
