@@ -33,6 +33,9 @@ config = "0.14"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
+# Force getrandom 0.2.x for Rust 1.82 compatibility
+getrandom = "=0.2.15"
+
 [dev-dependencies]
 tokio-test = "0.4"
 tempfile = "3.8"
