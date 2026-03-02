@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["Your Name <you@example.com>"]
 description = "Time-aware harness for long-running AI agents"
 license = "MIT"
+resolver = "2"
 
 [dependencies]
 tokio = { version = "1.35", features = ["full", "rt-multi-thread"] }
@@ -31,9 +32,6 @@ config = "0.14"
 
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-
-[patch.crates-io]
-getrandom = { version = "=0.2.15" }
 
 [dev-dependencies]
 tokio-test = "0.4"
