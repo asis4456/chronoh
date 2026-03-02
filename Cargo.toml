@@ -26,9 +26,9 @@ async-trait = "0.1"
 anyhow = "1.0"
 thiserror = "1.0"
 
-uuid = { version = "1.6", features = ["v4", "serde"] }
+uuid = { version = "1.4", features = ["v4", "serde"] }
 
-config = "0.14"
+config = "0.13"
 
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
